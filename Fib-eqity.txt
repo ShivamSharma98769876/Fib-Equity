@@ -1,0 +1,104 @@
+Here is a comprehensive **Product Requirement Document (PRD)** for a Python-based stock selection system for swing trading, focusing on Nifty 50 stocks and incorporating your functional requirements:
+
+***
+
+## Product Requirement Document (PRD):  
+**Swing Trade Stock Screener with Fibonacci Analysis**
+
+***
+
+### 1. Objective
+
+**To develop a Python-based system with a user-friendly interface that scans Nifty 50 stocks, identifies swing trade candidates using 15-minute charts and Fibonacci retracement levels, and visually highlights eligible stocks/indices for swing trades.**
+
+***
+
+### 2. Features & Functional Requirements
+
+#### 2.1 Input Stock List
+- Accepts a `.txt` or `.csv` file containing a list of stock symbols (initially Nifty 50, all liquid stocks).
+- Load the list dynamically at start and on refresh.
+
+#### 2.2 Live Chart Data Fetching
+- For each stock symbol, fetches spot price 15-minute interval OHLCV candlestick data for daily trading session (latest X days, configurable).
+- Supports both end-of-day and intraday data fetching (use APIs like Kite Connect, Upstox, or Yahoo Finance).
+
+#### 2.3 Swing Point Detection
+- For each stock:
+  - Identify the **second last swing low** and **second last swing high** on the 15-minute chart within the last N candles (parameterized: e.g., last 30 bars).
+  - "Swing high" defined as a local maximum with higher close than immediate neighbors; "swing low" as local minimum.
+
+#### 2.4 Fibonacci Retracement Analysis
+- For each stock/indices:
+    - **UPTREND:** Apply Fibonacci retracement from swing low to swing high.
+    - **DOWNTREND:** Apply from swing high to swing low.
+- Capture corresponding price levels at 1.618, 0.786, and 0.5.
+- Method to dynamically detect trend direction (e.g., compare last swing low/high sequence or use moving average).
+
+#### 2.5 Eligibility Scanning & Highlighting
+- Compare **current market price** with calculated Fibonacci bands:
+  - If the price is **between the 0.5 and 0.618 retracement levels**, flag it as a swing trade candidate.
+- List all stocks/indices and **highlight eligible candidates** in bold (UI), along with relevant Fibonacci values.
+
+#### 2.6 User Interface
+- Dashboard/table display of all scanned stocks:
+    - Columns: Symbol, Swing Low, Swing High, 1.618 Level, 0.786 Level, 0.5 Level, Current Price, Trend, Eligibility.
+    - Bold/highlight the row for eligible swing trades.
+- Real-time refresh and filtering.
+- Option to export results to .csv.
+
+***
+
+### 3. Technical Requirements
+
+- **Language:** Python 3.x
+- **Data Source:** API integration (Kite Connect, Upstox, Yahoo Finance, Fyers, etc.)
+- **UI:** Streamlit, Dash, PyQt, or Tkinter for dashboard.
+- **Libraries:** pandas, numpy, talib/finta (TA), yfinance/kiteconnect, plotly/matplotlib/charts.
+- **File Input:** Stock list file via upload or file path.
+
+***
+
+### 4. User Stories
+
+- **As a trader**, I want to see all eligible swing trade stocks, highlighted and filtered, for quick decision-making.
+- **As an analyst**, I want to review swing points and Fibonacci levels visually for each stock.
+- **As an admin**, I want to import new stock lists as needed.
+
+***
+
+### 5. Workflow Diagram (High-Level)
+
+1. **Load Stock List**  
+↓  
+2. **For Each Stock:**  
+   -  Fetch 15-min OHLCV Data  
+   -  Identify Second Last Swing High & Low  
+   -  Detect Trend (Up/Down)  
+   -  Apply Fibonacci Levels  
+   -  Calculate Bands  
+   -  Check Price Eligibility  
+↓  
+3. **Display & Highlight Results in UI**  
+↓  
+4. **User Interaction (Refresh, Export, Filter)**
+
+***
+
+### 6. Validation & Alert Logic
+
+- Highlight row if (Current Price > 0.5 Level) AND (Current Price < 0.618 Level).
+- Allow user to click or filter for only eligible stocks.
+
+***
+
+### 7. Extras and Future Scope (Optional)
+
+- Chart previews with swing/Fibonacci overlay.
+- Notification/alert on new eligible candidates.
+- Backtest module for swing trade signals.
+- Multi-timeframe scan (e.g., daily, hourly).
+
+***
+
+**Let me know if you want a detailed data schema, UI mockup, or sample code module for any part!**

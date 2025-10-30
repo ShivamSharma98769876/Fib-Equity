@@ -1,0 +1,20 @@
+# API Configuration
+# Yahoo Finance (no API key required)
+YAHOO_FINANCE_ENABLED=true
+
+# Kite Connect API (optional)
+KITE_API_KEY=your_kite_api_key_here
+KITE_ACCESS_TOKEN=your_kite_access_token_here
+
+# Upstox API (optional)
+UPSTOX_API_KEY=your_upstox_api_key_here
+UPSTOX_ACCESS_TOKEN=your_upstox_access_token_here
+
+# Analysis Configuration
+LOOKBACK_PERIOD=30
+REFRESH_INTERVAL=30
+
+# Data Configuration
+DATA_INTERVAL=15m
+DATA_PERIOD=5d
+CACHE_DURATION=300

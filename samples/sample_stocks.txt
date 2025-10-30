@@ -1,0 +1,13 @@
+# Sample Stock List for Testing
+# Add .NS suffix for Yahoo Finance compatibility
+
+RELIANCE.NS
+TCS.NS
+HDFCBANK.NS
+INFY.NS
+HINDUNILVR.NS
+ITC.NS
+SBIN.NS
+BHARTIARTL.NS
+KOTAKBANK.NS
+LT.NS
