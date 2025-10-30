@@ -38,8 +38,8 @@ def main():
     subprocess.run([
         sys.executable, "-m", "streamlit", "run", 
         str(app_path),
-        "--server.port", "8503",
-        "--server.address", "localhost"
+        # "--server.port", "8503",
+        # "--server.address", "localhost"
     ])
     
     return 0
